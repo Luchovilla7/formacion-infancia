@@ -423,6 +423,35 @@
             line-height: 1.4;
         }
 
+        .method-image-wrap {
+            margin-top: 36px;
+            position: relative;
+            max-width: 480px;
+        }
+
+        .method-image-wrap::before {
+            content: "";
+            position: absolute;
+            inset: 12px -12px -12px 12px;
+            background: var(--turquesa);
+            border-radius: 4px;
+            z-index: 0;
+            transform: rotate(-1.5deg);
+        }
+
+        .method-image {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 4px;
+            background: var(--fucsia);
+            transform: rotate(1deg);
+            border: 3px solid var(--petroleo);
+        }
+
         /* ---------- Testimonials ---------- */
         .testi-grid {
             display: grid;
@@ -756,6 +785,12 @@
                 font-size: 17px;
             }
 
+            .method-image-wrap {
+                margin-top: 24px;
+                margin-bottom: 24px;
+                max-width: 100%;
+            }
+
             .price-card.featured::before {
                 right: -30px;
                 top: 18px;
@@ -810,10 +845,10 @@
         <div class="wrap">
             <p class="statement-text"
                 style="font-family: 'Playfair Display', serif; font-size: clamp(24px, 3.5vw, 38px); font-style: italic; font-weight: 500; line-height: 1.5; color: var(--petroleo); max-width: 960px; margin: 0 auto; letter-spacing: -0.01em;">
-                “Tres meses transformadores que van a cambiar tu manera de pensar en el <span
+                Tres meses transformadores que van a cambiar tu manera de pensar en el <span
                     style="color: var(--fucsia); font-style: normal; font-weight: 600;">canto</span>, en las <span
                     style="color: var(--violeta); font-style: normal; font-weight: 600;">infancias</span> y en nuestro
-                vínculo con el <span style="color: var(--turquesa); font-style: normal; font-weight: 600;">arte</span>.”
+                vínculo con el <span style="color: var(--turquesa); font-style: normal; font-weight: 600;">arte</span>.
             </p>
         </div>
     </section>
@@ -870,12 +905,16 @@
                 <span class="eyebrow">Método de cursada</span>
                 <h2 class="h-lg">Encuentros en vivo, con acceso de por vida al material</h2>
                 <p class="sub">Una formación pensada para quien ya está dando clases y necesita sumar estructura, sin
-                    abandonar sus otros compromisos.</p>
+                    abandonar sus otros compromisos. <strong>Podés cursarla de forma sincrónica o 100% asincrónica, a tu
+                        propio ritmo.</strong></p>
+                <div class="method-image-wrap">
+                    <img src="img/cursada.jpeg" alt="Detalles de la cursada" class="method-image">
+                </div>
             </div>
             <div class="method-card">
                 <div class="method-row">
                     <dt>Formato</dt>
-                    <dd>Sincrónico por MS Teams</dd>
+                    <dd>Sincrónico (en vivo por MS Teams) o Asincrónico (a tu propio ritmo)</dd>
                 </div>
                 <div class="method-row">
                     <dt>Día y hora</dt>
