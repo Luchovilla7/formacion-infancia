@@ -39,6 +39,7 @@
             font-weight: 400;
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         h1,
@@ -48,7 +49,7 @@
             font-family: 'Bebas Neue', sans-serif;
             font-weight: 400;
             letter-spacing: 0.02em;
-            line-height: 1.02;
+            line-height: 0.98;
             text-transform: uppercase;
             color: var(--petroleo);
         }
@@ -78,24 +79,40 @@
             margin-bottom: 18px;
         }
 
-        .staff {
-            width: 100%;
-            height: 14px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin: 0;
+        /* marker-style text highlight, used sparingly on key words */
+        .hl {
+            background-image: linear-gradient(var(--amarillo), var(--amarillo));
+            background-repeat: no-repeat;
+            background-size: 100% 38%;
+            background-position: 0 78%;
+            padding: 0 6px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
         }
 
-        .staff-lines {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
+        .hl-alt {
+            background-image: linear-gradient(var(--turquesa), var(--turquesa));
+            background-repeat: no-repeat;
+            background-size: 100% 38%;
+            background-position: 0 78%;
+            padding: 0 6px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
         }
 
-        .staffline {
-            height: 2px;
-            width: 100%;
+        /* rotated stamp/badge, replaces the quiet thin pentagram lines */
+        .stamp {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transform: rotate(-3deg);
+            background: var(--fucsia);
+            color: var(--crema);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.12em;
+            font-size: 13px;
+            padding: 9px 20px 8px;
+            border-radius: 999px;
         }
 
         /* ---------- Nav ---------- */
@@ -103,9 +120,9 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(250, 249, 245, 0.92);
+            background: rgba(250, 249, 245, 0.94);
             backdrop-filter: blur(6px);
-            border-bottom: 1px solid rgba(23, 56, 74, 0.08);
+            border-bottom: 3px solid var(--petroleo);
         }
 
         .nav {
@@ -135,30 +152,31 @@
             font-size: 14px;
             padding: 12px 26px;
             border-radius: 2px;
-            transition: background .25s ease;
+            transition: all .25s ease;
         }
 
         .nav-cta:hover {
             background: var(--fucsia);
+            transform: rotate(-2deg);
         }
 
         /* ---------- Hero ---------- */
         .hero {
-            padding: 96px 0 80px;
+            padding: 84px 0 90px;
             position: relative;
             overflow: hidden;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 64px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 56px;
             align-items: center;
         }
 
         .hero h1 {
-            font-size: clamp(46px, 6.2vw, 84px);
-            margin-bottom: 26px;
+            font-size: clamp(48px, 6.6vw, 90px);
+            margin-bottom: 28px;
         }
 
         .hero h1 em {
@@ -170,7 +188,7 @@
             font-size: 19px;
             max-width: 520px;
             color: #2b4b5c;
-            margin-bottom: 34px;
+            margin-bottom: 32px;
         }
 
         .btn-primary {
@@ -186,13 +204,13 @@
         }
 
         .btn-primary:hover {
-            background: var(--petroleo);
-            transform: translateY(-2px);
+            background: var(--naranja);
+            transform: translateY(-2px) rotate(-1deg);
         }
 
         .btn-outline {
             display: inline-block;
-            border: 1.5px solid var(--petroleo);
+            border: 2px solid var(--petroleo);
             color: var(--petroleo);
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 0.1em;
@@ -207,84 +225,63 @@
             color: var(--crema);
         }
 
+        .hero-photo-wrap {
+            position: relative;
+        }
+
+        .hero-photo-wrap::before {
+            content: "";
+            position: absolute;
+            inset: 18px -18px -18px 18px;
+            background: var(--amarillo);
+            border-radius: 4px;
+            z-index: 0;
+            transform: rotate(2deg);
+        }
+
         .hero-photo {
             position: relative;
+            z-index: 1;
             aspect-ratio: 4/5;
             background: linear-gradient(160deg, var(--violeta) 0%, var(--fucsia) 100%);
             border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
+            transform: rotate(-1.5deg);
         }
 
-        .hero-photo .ph-label {
-            color: rgba(255, 255, 255, 0.85);
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 0.08em;
-            font-size: 14px;
-            text-align: center;
-            padding: 0 30px;
-        }
-
-        .hero-photo::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: repeating-linear-gradient(90deg, var(--amarillo) 0 40px, transparent 40px 80px);
-        }
-
-        .hero-staff {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            margin-top: 36px;
-            width: 220px;
-        }
-
-        .hero-staff div {
-            height: 2px;
-            background: var(--petroleo);
-            opacity: 0.15;
-        }
-
-        .hero-staff div:nth-child(1) {
-            background: var(--fucsia);
-            opacity: 1;
-            width: 70%;
-        }
-
-        .hero-staff div:nth-child(3) {
-            background: var(--turquesa);
-            opacity: 1;
-            width: 45%;
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* ---------- Section shells ---------- */
         section {
-            padding: 104px 0;
+            padding: 100px 0;
         }
 
-        .section-alt {
+        .section-petroleo {
             background: var(--petroleo);
             color: var(--crema);
         }
 
-        .section-alt h2 {
+        .section-petroleo h2 {
             color: var(--crema);
         }
 
-        .section-alt .eyebrow {
+        .section-petroleo .eyebrow {
             color: var(--amarillo);
         }
 
+        .section-violeta {
+            background: var(--violeta);
+            color: var(--crema);
+        }
+
         h2.h-lg {
-            font-size: clamp(34px, 4.2vw, 54px);
+            font-size: clamp(34px, 4.4vw, 56px);
             margin-bottom: 24px;
-            max-width: 780px;
+            max-width: 820px;
         }
 
         p.sub {
@@ -293,114 +290,137 @@
             color: #2b4b5c;
         }
 
-        .section-alt p.sub {
+        .section-petroleo p.sub {
             color: #c9d6dc;
         }
 
-        /* ---------- Insight / problem ---------- */
-        .insight {
-            display: grid;
-            grid-template-columns: 0.4fr 0.6fr;
-            gap: 60px;
+        /* ---------- Insight / rebel quote (full-bleed violeta) ---------- */
+        .insight-quote {
+            text-align: center;
         }
 
-        .insight-mark {
+        .insight-quote .stamp {
+            background: var(--amarillo);
+            color: var(--petroleo);
+            margin-bottom: 30px;
+        }
+
+        .insight-quote blockquote {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 120px;
-            color: var(--turquesa);
-            line-height: 0.8;
+            text-transform: uppercase;
+            font-size: clamp(30px, 4.8vw, 58px);
+            line-height: 1.08;
+            letter-spacing: 0.01em;
+            max-width: 920px;
+            margin: 0 auto;
         }
 
-        .insight blockquote {
-            font-size: 26px;
-            font-style: italic;
-            font-weight: 500;
-            line-height: 1.5;
+        .insight-quote .hl {
+            background-image: linear-gradient(var(--fucsia), var(--fucsia));
             color: var(--petroleo);
         }
 
-        /* ---------- Learn grid ---------- */
+        .insight-quote .hl-alt {
+            background-image: linear-gradient(var(--turquesa), var(--turquesa));
+            color: var(--petroleo);
+        }
+
+        /* ---------- Learn grid — solid color cards ---------- */
         .learn-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            background: rgba(23, 56, 74, 0.1);
-            border: 1px solid rgba(23, 56, 74, 0.1);
+            gap: 24px;
+            margin-top: 16px;
         }
 
         .learn-item {
-            background: var(--crema);
-            padding: 44px 40px;
-            position: relative;
+            padding: 40px 36px;
+            border-radius: 6px;
+            color: var(--crema);
+            transform: rotate(-0.6deg);
         }
 
-        .learn-item .bar {
-            width: 44px;
-            height: 5px;
-            margin-bottom: 22px;
+        .learn-item:nth-child(even) {
+            transform: rotate(0.6deg);
         }
 
-        .learn-item:nth-child(1) .bar {
+        .learn-item:nth-child(1) {
             background: var(--fucsia);
         }
 
-        .learn-item:nth-child(2) .bar {
+        .learn-item:nth-child(2) {
             background: var(--turquesa);
+            color: var(--petroleo);
         }
 
-        .learn-item:nth-child(3) .bar {
+        .learn-item:nth-child(3) {
             background: var(--naranja);
         }
 
-        .learn-item:nth-child(4) .bar {
+        .learn-item:nth-child(4) {
             background: var(--violeta);
         }
 
+        .learn-item .num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 0.18em;
+            opacity: 0.85;
+            margin-bottom: 14px;
+            display: block;
+        }
+
         .learn-item h3 {
-            font-size: 24px;
+            font-size: 27px;
             margin-bottom: 12px;
             letter-spacing: 0.01em;
+            color: inherit;
         }
 
         .learn-item p {
-            color: #3d5a68;
             font-size: 16px;
+            opacity: 0.95;
         }
 
-        /* ---------- Method / schedule ---------- */
+        /* ---------- Method / schedule — fixed for readability ---------- */
         .method {
             display: grid;
-            grid-template-columns: 0.55fr 0.45fr;
-            gap: 60px;
+            grid-template-columns: 0.5fr 0.5fr;
+            gap: 56px;
             align-items: start;
         }
 
         .method-card {
-            background: var(--crema);
-            color: var(--petroleo);
-            padding: 44px;
-            border-radius: 4px;
-            border-top: 5px solid var(--amarillo);
+            background: var(--petroleo);
+            color: var(--crema);
+            padding: 8px 0;
+            border-radius: 6px;
+            overflow: hidden;
         }
 
-        .method-card dl {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 14px 20px;
-            margin-top: 8px;
+        .method-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 22px 32px;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.14);
         }
 
-        .method-card dt {
+        .method-row:last-child {
+            border-bottom: none;
+        }
+
+        .method-row dt {
             font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 0.06em;
-            color: var(--fucsia);
-            font-size: 14px;
-            white-space: nowrap;
+            letter-spacing: 0.16em;
+            color: var(--amarillo);
+            font-size: 13px;
         }
 
-        .method-card dd {
-            font-size: 16px;
-            color: #2b4b5c;
+        .method-row dd {
+            font-size: 19px;
+            color: var(--crema);
+            line-height: 1.4;
         }
 
         /* ---------- Testimonials ---------- */
@@ -417,10 +437,42 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.2s ease;
+            transform: rotate(-1.5deg);
+            padding: 10px;
+            background: var(--crema);
+            border-radius: 6px;
+        }
+
+        .testi-card:nth-child(2n) {
+            transform: rotate(1.5deg);
+        }
+
+        .testi-card:nth-child(1) {
+            box-shadow: 0 0 0 4px var(--fucsia);
+        }
+
+        .testi-card:nth-child(2) {
+            box-shadow: 0 0 0 4px var(--amarillo);
+        }
+
+        .testi-card:nth-child(3) {
+            box-shadow: 0 0 0 4px var(--turquesa);
+        }
+
+        .testi-card:nth-child(4) {
+            box-shadow: 0 0 0 4px var(--naranja);
+        }
+
+        .testi-card:nth-child(5) {
+            box-shadow: 0 0 0 4px var(--violeta);
+        }
+
+        .testi-card:nth-child(6) {
+            box-shadow: 0 0 0 4px var(--fucsia);
         }
 
         .testi-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px) rotate(0deg);
         }
 
         .testi-card img {
@@ -430,9 +482,7 @@
             height: auto;
             display: block;
             object-fit: contain;
-            border: 1px solid rgba(23, 56, 74, 0.12);
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(23, 56, 74, 0.04);
+            border-radius: 3px;
         }
 
         /* ---------- Pricing ---------- */
@@ -446,8 +496,8 @@
         .price-card {
             background: var(--crema);
             padding: 44px 40px;
-            border-radius: 4px;
-            border: 1px solid rgba(23, 56, 74, 0.12);
+            border-radius: 6px;
+            border: 2px solid var(--petroleo);
             position: relative;
         }
 
@@ -455,6 +505,20 @@
             border: none;
             background: var(--petroleo);
             color: var(--crema);
+        }
+
+        .price-card.featured::before {
+            content: "LA MÁS ELEGIDA";
+            position: absolute;
+            top: 22px;
+            right: -34px;
+            background: var(--fucsia);
+            color: var(--crema);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.14em;
+            font-size: 12px;
+            padding: 6px 40px;
+            transform: rotate(6deg);
         }
 
         .price-card.featured .price-label {
@@ -475,7 +539,7 @@
         }
 
         .price-amount {
-            font-size: 44px;
+            font-size: 46px;
             font-family: 'Bebas Neue', sans-serif;
             margin-bottom: 2px;
         }
@@ -500,32 +564,42 @@
             align-items: center;
         }
 
-        .about-photo {
-            aspect-ratio: 3/4;
-            background: linear-gradient(165deg, var(--amarillo), var(--naranja));
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .about-photo-wrap {
+            position: relative;
         }
 
-        .about-photo .ph-label {
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 0.06em;
-            font-size: 14px;
-            color: rgba(23, 56, 74, 0.75);
-            text-align: center;
-            padding: 0 24px;
+        .about-photo-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -16px -16px 16px 16px;
+            background: var(--turquesa);
+            border-radius: 4px;
+            transform: rotate(-3deg);
+        }
+
+        .about-photo {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: 4px;
+            overflow: hidden;
+            transform: rotate(1.5deg);
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about h2 {
-            font-size: 38px;
-            margin-bottom: 6px;
+            font-size: 40px;
+            margin-bottom: 8px;
+            color: var(--crema);
         }
 
         .about .role {
             font-family: 'Bebas Neue', sans-serif;
-            color: var(--turquesa-dark, var(--turquesa));
+            color: var(--amarillo);
             letter-spacing: 0.06em;
             font-size: 14px;
             margin-bottom: 22px;
@@ -534,7 +608,7 @@
 
         .about p {
             font-size: 17px;
-            color: #2b4b5c;
+            color: #c9d6dc;
             margin-bottom: 16px;
         }
 
@@ -545,14 +619,19 @@
         }
 
         details {
-            border-bottom: 1px solid rgba(23, 56, 74, 0.15);
+            border-bottom: 2px solid rgba(23, 56, 74, 0.15);
             padding: 22px 0;
+            transition: border-color .2s ease;
+        }
+
+        details[open] {
+            border-color: var(--fucsia);
         }
 
         summary {
             cursor: pointer;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 19px;
+            font-size: 20px;
             letter-spacing: 0.01em;
             list-style: none;
             display: flex;
@@ -589,12 +668,28 @@
         .final-cta {
             text-align: center;
             padding: 110px 0;
+            background: var(--fucsia);
+            color: var(--crema);
+        }
+
+        .final-cta .eyebrow {
+            color: var(--petroleo);
         }
 
         .final-cta h2 {
-            font-size: clamp(38px, 5vw, 64px);
+            font-size: clamp(38px, 5.2vw, 66px);
             max-width: 780px;
             margin: 0 auto 30px;
+            color: var(--crema);
+        }
+
+        .final-cta .btn-primary {
+            background: var(--petroleo);
+        }
+
+        .final-cta .btn-primary:hover {
+            background: var(--amarillo);
+            color: var(--petroleo);
         }
 
         /* ---------- Footer ---------- */
@@ -620,9 +715,11 @@
         @media (max-width:860px) {
 
             .hero-grid,
-            .insight,
-            .method,
             .about {
+                grid-template-columns: 1fr;
+            }
+
+            .method {
                 grid-template-columns: 1fr;
             }
 
@@ -630,8 +727,17 @@
                 grid-template-columns: 1fr;
             }
 
+            .learn-item,
+            .learn-item:nth-child(even) {
+                transform: none;
+            }
+
             .testi-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testi-card {
+                transform: none !important;
             }
 
             .pricing-grid {
@@ -639,15 +745,26 @@
             }
 
             section {
-                padding: 72px 0;
-            }
-
-            .insight-mark {
-                font-size: 70px;
+                padding: 64px 0;
             }
 
             .hero {
-                padding: 64px 0 56px;
+                padding: 56px 0 48px;
+            }
+
+            .method-row dd {
+                font-size: 17px;
+            }
+
+            .price-card.featured::before {
+                right: -30px;
+                top: 18px;
+            }
+        }
+
+        @media (max-width:520px) {
+            .testi-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -672,66 +789,57 @@
         <div class="wrap">
             <div class="hero-grid">
                 <div>
-                    <span class="eyebrow">Formación trimestral online · Agosto — Octubre</span>
-                    <h1>Pedagogía vocal para la <em>infancia</em> y la adolescencia</h1>
+                    <span class="stamp">La rebelde de la pedagogía vocal</span>
+                    <h1 style="margin-top:22px;">Pedagogía vocal para la <em>infancia</em> y la adolescencia</h1>
                     <p class="lede">Acompañá a las próximas generaciones a vincularse con su voz desde el amor, el
                         cuidado y la felicidad de expresarse libremente.</p>
                     <a href="#inscripcion" class="btn-primary">Inscribirme ahora</a>
-                    <div class="hero-staff">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
                 </div>
-                <div class="hero-photo">
-                    <img src="img/hero.png" alt="">
+                <div class="hero-photo-wrap">
+                    <div class="hero-photo">
+                        <img src="img/hero.png" alt="Carolina Roisinblit dando clase de canto">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INSIGHT -->
-    <section>
-        <div class="wrap insight">
-            <div class="insight-mark">“</div>
-            <div>
-                <span class="eyebrow">El problema que resolvemos</span>
-                <blockquote>Si sentís inseguridad al enseñar a cantar a niñxs o preadolescentes, es porque nadie te dio
-                    las herramientas para abordar la educación vocal a estas edades con conocimiento, fundamentación
-                    teórica, criterio pedagógico y estrategias acordes a cada etapa del crecimiento.</blockquote>
-            </div>
+    <!-- INSIGHT / REBEL QUOTE -->
+    <section class="section-violeta insight-quote">
+        <div class="wrap">
+            <span class="stamp">El problema que resolvemos</span>
+            <blockquote style="margin-top:28px;">Si sentís <span class="hl">inseguridad</span> al enseñar a cantar a
+                niñxs, es porque nadie te dio las herramientas para hacerlo con <span class="hl-alt">criterio
+                    pedagógico</span> real — y no solo con intuición.</blockquote>
         </div>
     </section>
 
     <!-- LEARN -->
-    <section class="section-alt">
+    <section>
         <div class="wrap">
             <span class="eyebrow">Qué vas a lograr</span>
-            <h2 class="h-lg">Herramientas concretas para cada etapa del crecimiento vocal</h2>
-        </div>
-        <div class="wrap" style="margin-top:16px;">
+            <h2 class="h-lg">Herramientas concretas para cada etapa del <span class="hl">crecimiento vocal</span>
+            </h2>
             <div class="learn-grid">
                 <div class="learn-item">
-                    <div class="bar"></div>
+                    <span class="num">01 — Criterio</span>
                     <h3>Criterio pedagógico</h3>
-                    <p>Decidir qué ejercicios y propuestas son mejores para cada grupo, alumnx y etapa del aprendizaje.
-                    </p>
+                    <p>Decidir qué ejercicios y propuestas son mejores para cada grupo, alumnx y etapa del
+                        aprendizaje.</p>
                 </div>
                 <div class="learn-item">
-                    <div class="bar"></div>
+                    <span class="num">02 — Autonomía</span>
                     <h3>Estrategias propias</h3>
                     <p>Crear nuevas estrategias pedagógicas que funcionan, sabiendo por qué hacés lo que hacés.</p>
                 </div>
                 <div class="learn-item">
-                    <div class="bar"></div>
+                    <span class="num">03 — Cuidado</span>
                     <h3>Cuidado vocal</h3>
                     <p>Cómo cuidar voces en crecimiento y qué cosas no se deben proponer vocalmente a unx niñx o
                         adolescente.</p>
                 </div>
                 <div class="learn-item">
-                    <div class="bar"></div>
+                    <span class="num">04 — Juego</span>
                     <h3>Propuestas lúdicas</h3>
                     <p>Complementar tus clases con actividades para entrenar la voz desde ángulos nuevos, dinámicos y
                         divertidos.</p>
@@ -741,7 +849,7 @@
     </section>
 
     <!-- METHOD -->
-    <section>
+    <section class="section-petroleo">
         <div class="wrap method">
             <div>
                 <span class="eyebrow">Método de cursada</span>
@@ -750,49 +858,61 @@
                     abandonar sus otros compromisos.</p>
             </div>
             <div class="method-card">
-                <dl>
+                <div class="method-row">
                     <dt>Formato</dt>
                     <dd>Sincrónico por MS Teams</dd>
+                </div>
+                <div class="method-row">
                     <dt>Día y hora</dt>
                     <dd>Jueves, 18.30hs (Argentina)</dd>
+                </div>
+                <div class="method-row">
                     <dt>Inicio</dt>
                     <dd>Jueves 6 de agosto</dd>
+                </div>
+                <div class="method-row">
                     <dt>Duración</dt>
-                    <dd>Clases de una hora, trimestre completo (agosto a octubre)</dd>
+                    <dd>Clases de una hora — trimestre completo, agosto a octubre</dd>
+                </div>
+                <div class="method-row">
                     <dt>Dedicación</dt>
                     <dd>2 a 3 horas semanales para materiales y actividades</dd>
+                </div>
+                <div class="method-row">
                     <dt>Comunidad</dt>
                     <dd>Grupo de WhatsApp con espacio de consulta</dd>
+                </div>
+                <div class="method-row">
                     <dt>Grabaciones</dt>
                     <dd>Disponibles en la plataforma, acceso de por vida</dd>
-                </dl>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="section-alt">
+    <section>
         <div class="wrap">
             <span class="eyebrow">Lo que dicen quienes ya cursaron</span>
-            <h2 class="h-lg">Docentes que encontraron su criterio propio</h2>
+            <h2 class="h-lg">Docentes que encontraron su <span class="hl-alt">criterio propio</span></h2>
             <div class="testi-grid">
                 <div class="testi-card">
-                    <img src="./img/testimonio1.jpeg" alt="">
+                    <img src="./img/testimonio1.jpeg" alt="Testimonio de alumna">
                 </div>
                 <div class="testi-card">
-                    <img src="./img/testimonio2.jpeg" alt="">
+                    <img src="./img/testimonio2.jpeg" alt="Testimonio de alumna">
                 </div>
                 <div class="testi-card">
-                    <img src="./img/testimonio3.jpeg" alt="">
+                    <img src="./img/testimonio3.jpeg" alt="Testimonio de alumna">
                 </div>
                 <div class="testi-card">
-                    <img src="./img/testimonio4.jpeg" alt="">
+                    <img src="./img/testimonio4.jpeg" alt="Testimonio de alumna">
                 </div>
                 <div class="testi-card">
-                    <img src="./img/testimonio5.jpeg" alt="">
+                    <img src="./img/testimonio5.jpeg" alt="Testimonio de alumna">
                 </div>
                 <div class="testi-card">
-                    <img src="./img/testimonio6.jpeg" alt="">
+                    <img src="./img/testimonio6.jpeg" alt="Testimonio de alumna">
                 </div>
             </div>
         </div>
@@ -822,24 +942,25 @@
     </section>
 
     <!-- ABOUT -->
-    <section class="section-alt">
+    <section class="section-petroleo">
         <div class="wrap about">
-            <div class="about-photo">
-                <img src="img/caro.jpg" alt="">
+            <div class="about-photo-wrap">
+                <div class="about-photo">
+                    <img src="img/caro.jpg" alt="Carolina Roisinblit">
+                </div>
             </div>
             <div>
                 <span class="eyebrow">Quién dicta la formación</span>
                 <h2>Carolina Roisinblit</h2>
                 <span class="role">25 años formando cantantes y docentes de canto</span>
-                <p style="color: #c9d6dc;">Autora de 5 libros sobre el canto y la voz, hace 10 años dicta esta formación
-                    en pedagogía vocal para
-                    la infancia y la adolescencia, desde una mirada que integra técnica, desarrollo humano, cuerpo,
-                    emoción y creatividad.</p>
-                <p style="color: #c9d6dc;">A lo largo de su carrera notó algo que se repetía: muchxs docentes llegaban a
-                    trabajar con infancias
-                    y adolescencias sin herramientas específicas, sosteniéndose desde la intuición o replicando modelos
-                    pensados para personas adultas — generando inseguridad docente y experiencias vocales rígidas o poco
-                    respetuosas de los procesos evolutivos. Esta formación nace para cambiar eso.</p>
+                <p>Autora de 5 libros sobre el canto y la voz, hace 10 años dicta esta formación en pedagogía vocal
+                    para la infancia y la adolescencia, desde una mirada que integra técnica, desarrollo humano,
+                    cuerpo, emoción y creatividad.</p>
+                <p>A lo largo de su carrera notó algo que se repetía: muchxs docentes llegaban a trabajar con
+                    infancias y adolescencias sin herramientas específicas, sosteniéndose desde la intuición o
+                    replicando modelos pensados para personas adultas — generando inseguridad docente y experiencias
+                    vocales rígidas o poco respetuosas de los procesos evolutivos. Esta formación nace para romper
+                    con eso.</p>
             </div>
         </div>
     </section>
@@ -853,8 +974,8 @@
                 <details open>
                     <summary>¿Necesito ser docente de canto para participar?</summary>
                     <p>No necesariamente. La formación está dirigida a docentes de canto, profesores de música,
-                        directores de coro y profesionales que trabajen o deseen trabajar con infancias y adolescencias
-                        desde la voz.</p>
+                        directores de coro y profesionales que trabajen o deseen trabajar con infancias y
+                        adolescencias desde la voz.</p>
                 </details>
                 <details>
                     <summary>¿Necesito conocimientos previos de técnica vocal?</summary>
@@ -868,8 +989,8 @@
                 </details>
                 <details>
                     <summary>¿La formación es solamente para quienes trabajan con niños?</summary>
-                    <p>No. También está especialmente pensada para quienes trabajan con adolescentes, o desean comenzar
-                        a hacerlo con mayor seguridad y herramientas pedagógicas.</p>
+                    <p>No. También está especialmente pensada para quienes trabajan con adolescentes, o desean
+                        comenzar a hacerlo con mayor seguridad y herramientas pedagógicas.</p>
                 </details>
                 <details>
                     <summary>¿Las clases quedan grabadas?</summary>
@@ -878,14 +999,15 @@
                 </details>
                 <details>
                     <summary>¿Cuánto tiempo debo dedicarle por semana?</summary>
-                    <p>Además de las clases en vivo, recomendamos destinar entre 2 y 3 horas semanales para la lectura
-                        de materiales, la realización de actividades y la participación en los espacios de intercambio.
-                    </p>
+                    <p>Además de las clases en vivo, recomendamos destinar entre 2 y 3 horas semanales para la
+                        lectura de materiales, la realización de actividades y la participación en los espacios de
+                        intercambio.</p>
                 </details>
                 <details>
                     <summary>¿La entrevista garantiza mi ingreso a la formación?</summary>
                     <p>La entrevista forma parte del proceso de admisión y nos permite asegurar que la propuesta sea
-                        adecuada para cada participante, cuidando la experiencia de aprendizaje y el trabajo grupal.</p>
+                        adecuada para cada participante, cuidando la experiencia de aprendizaje y el trabajo grupal.
+                    </p>
                 </details>
             </div>
         </div>
