@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedagogía Vocal para la Infancia y la Adolescencia — Carolina Roisinblit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --fucsia: #F31C7B;
+            --amarillo: #F8C826;
+            --turquesa: #18C9D6;
+            --naranja: #F67C22;
+            --violeta: #7A39D6;
+            --petroleo: #17384A;
+            --crema: #FAF9F5;
+            --crema-2: #F2EFE6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--crema);
+            color: var(--petroleo);
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        .display {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            line-height: 1.02;
+            text-transform: uppercase;
+            color: var(--petroleo);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .wrap {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .eyebrow {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.28em;
+            font-size: 13px;
+            color: var(--fucsia);
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+
+        .staff {
+            width: 100%;
+            height: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 0;
+        }
+
+        .staff-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .staffline {
+            height: 2px;
+            width: 100%;
+        }
+
+        /* ---------- Nav ---------- */
+        header.site {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(250, 249, 245, 0.92);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(23, 56, 74, 0.08);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 32px;
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: 0.06em;
+        }
+
+        .logo span {
+            color: var(--fucsia);
+        }
+
+        .nav-cta {
+            background: var(--petroleo);
+            color: var(--crema);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.08em;
+            font-size: 14px;
+            padding: 12px 26px;
+            border-radius: 2px;
+            transition: background .25s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--fucsia);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            padding: 96px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(46px, 6.2vw, 84px);
+            margin-bottom: 26px;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--fucsia);
+        }
+
+        .hero p.lede {
+            font-size: 19px;
+            max-width: 520px;
+            color: #2b4b5c;
+            margin-bottom: 34px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--fucsia);
+            color: var(--crema);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.1em;
+            font-size: 17px;
+            padding: 18px 40px;
+            border-radius: 2px;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--petroleo);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 1.5px solid var(--petroleo);
+            color: var(--petroleo);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.1em;
+            font-size: 17px;
+            padding: 16px 38px;
+            border-radius: 2px;
+            transition: all .2s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--petroleo);
+            color: var(--crema);
+        }
+
+        .hero-photo {
+            position: relative;
+            aspect-ratio: 4/5;
+            background: linear-gradient(160deg, var(--violeta) 0%, var(--fucsia) 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-photo .ph-label {
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.08em;
+            font-size: 14px;
+            text-align: center;
+            padding: 0 30px;
+        }
+
+        .hero-photo::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(90deg, var(--amarillo) 0 40px, transparent 40px 80px);
+        }
+
+        .hero-staff {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 36px;
+            width: 220px;
+        }
+
+        .hero-staff div {
+            height: 2px;
+            background: var(--petroleo);
+            opacity: 0.15;
+        }
+
+        .hero-staff div:nth-child(1) {
+            background: var(--fucsia);
+            opacity: 1;
+            width: 70%;
+        }
+
+        .hero-staff div:nth-child(3) {
+            background: var(--turquesa);
+            opacity: 1;
+            width: 45%;
+        }
+
+        /* ---------- Section shells ---------- */
+        section {
+            padding: 104px 0;
+        }
+
+        .section-alt {
+            background: var(--petroleo);
+            color: var(--crema);
+        }
+
+        .section-alt h2 {
+            color: var(--crema);
+        }
+
+        .section-alt .eyebrow {
+            color: var(--amarillo);
+        }
+
+        h2.h-lg {
+            font-size: clamp(34px, 4.2vw, 54px);
+            margin-bottom: 24px;
+            max-width: 780px;
+        }
+
+        p.sub {
+            font-size: 18px;
+            max-width: 640px;
+            color: #2b4b5c;
+        }
+
+        .section-alt p.sub {
+            color: #c9d6dc;
+        }
+
+        /* ---------- Insight / problem ---------- */
+        .insight {
+            display: grid;
+            grid-template-columns: 0.4fr 0.6fr;
+            gap: 60px;
+        }
+
+        .insight-mark {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 120px;
+            color: var(--turquesa);
+            line-height: 0.8;
+        }
+
+        .insight blockquote {
+            font-size: 26px;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--petroleo);
+        }
+
+        /* ---------- Learn grid ---------- */
+        .learn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: rgba(23, 56, 74, 0.1);
+            border: 1px solid rgba(23, 56, 74, 0.1);
+        }
+
+        .learn-item {
+            background: var(--crema);
+            padding: 44px 40px;
+            position: relative;
+        }
+
+        .learn-item .bar {
+            width: 44px;
+            height: 5px;
+            margin-bottom: 22px;
+        }
+
+        .learn-item:nth-child(1) .bar {
+            background: var(--fucsia);
+        }
+
+        .learn-item:nth-child(2) .bar {
+            background: var(--turquesa);
+        }
+
+        .learn-item:nth-child(3) .bar {
+            background: var(--naranja);
+        }
+
+        .learn-item:nth-child(4) .bar {
+            background: var(--violeta);
+        }
+
+        .learn-item h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            letter-spacing: 0.01em;
+        }
+
+        .learn-item p {
+            color: #3d5a68;
+            font-size: 16px;
+        }
+
+        /* ---------- Method / schedule ---------- */
+        .method {
+            display: grid;
+            grid-template-columns: 0.55fr 0.45fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .method-card {
+            background: var(--crema);
+            color: var(--petroleo);
+            padding: 44px;
+            border-radius: 4px;
+            border-top: 5px solid var(--amarillo);
+        }
+
+        .method-card dl {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 14px 20px;
+            margin-top: 8px;
+        }
+
+        .method-card dt {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.06em;
+            color: var(--fucsia);
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .method-card dd {
+            font-size: 16px;
+            color: #2b4b5c;
+        }
+
+        /* ---------- Testimonials ---------- */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 48px;
+            align-items: stretch;
+        }
+
+        .testi-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .testi-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .testi-card img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            border: 1px solid rgba(23, 56, 74, 0.12);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(23, 56, 74, 0.04);
+        }
+
+        /* ---------- Pricing ---------- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-top: 52px;
+        }
+
+        .price-card {
+            background: var(--crema);
+            padding: 44px 40px;
+            border-radius: 4px;
+            border: 1px solid rgba(23, 56, 74, 0.12);
+            position: relative;
+        }
+
+        .price-card.featured {
+            border: none;
+            background: var(--petroleo);
+            color: var(--crema);
+        }
+
+        .price-card.featured .price-label {
+            color: var(--amarillo);
+        }
+
+        .price-card.featured .price-note {
+            color: #c9d6dc;
+        }
+
+        .price-label {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.08em;
+            font-size: 14px;
+            color: var(--fucsia);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .price-amount {
+            font-size: 44px;
+            font-family: 'Bebas Neue', sans-serif;
+            margin-bottom: 2px;
+        }
+
+        .price-amount small {
+            font-size: 16px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        .price-note {
+            color: #3d5a68;
+            font-size: 15px;
+            margin: 14px 0 28px;
+        }
+
+        /* ---------- About ---------- */
+        .about {
+            display: grid;
+            grid-template-columns: 0.4fr 0.6fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-photo {
+            aspect-ratio: 3/4;
+            background: linear-gradient(165deg, var(--amarillo), var(--naranja));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-photo .ph-label {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.06em;
+            font-size: 14px;
+            color: rgba(23, 56, 74, 0.75);
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .about h2 {
+            font-size: 38px;
+            margin-bottom: 6px;
+        }
+
+        .about .role {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--turquesa-dark, var(--turquesa));
+            letter-spacing: 0.06em;
+            font-size: 14px;
+            margin-bottom: 22px;
+            display: block;
+        }
+
+        .about p {
+            font-size: 17px;
+            color: #2b4b5c;
+            margin-bottom: 16px;
+        }
+
+        /* ---------- FAQ ---------- */
+        .faq-list {
+            max-width: 760px;
+            margin-top: 44px;
+        }
+
+        details {
+            border-bottom: 1px solid rgba(23, 56, 74, 0.15);
+            padding: 22px 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 19px;
+            letter-spacing: 0.01em;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--fucsia);
+            flex-shrink: 0;
+            transition: transform .2s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        details p {
+            margin-top: 14px;
+            color: #2b4b5c;
+            font-size: 16px;
+            max-width: 640px;
+        }
+
+        /* ---------- Final CTA ---------- */
+        .final-cta {
+            text-align: center;
+            padding: 110px 0;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(38px, 5vw, 64px);
+            max-width: 780px;
+            margin: 0 auto 30px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background: var(--petroleo);
+            color: #c9d6dc;
+            padding: 48px 0;
+            font-size: 14px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-inner .logo {
+            color: var(--crema);
+        }
+
+        @media (max-width:860px) {
+
+            .hero-grid,
+            .insight,
+            .method,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .learn-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 72px 0;
+            }
+
+            .insight-mark {
+                font-size: 70px;
+            }
+
+            .hero {
+                padding: 64px 0 56px;
+            }
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--fucsia);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site">
+        <nav class="nav">
+            <div class="logo">CAROLINA <span>ROISINBLIT</span></div>
+            <a href="#inscripcion" class="nav-cta">Inscribirme</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wrap">
+            <div class="hero-grid">
+                <div>
+                    <span class="eyebrow">Formación trimestral online · Agosto — Octubre</span>
+                    <h1>Pedagogía vocal para la <em>infancia</em> y la adolescencia</h1>
+                    <p class="lede">Acompañá a las próximas generaciones a vincularse con su voz desde el amor, el
+                        cuidado y la felicidad de expresarse libremente.</p>
+                    <a href="#inscripcion" class="btn-primary">Inscribirme ahora</a>
+                    <div class="hero-staff">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="hero-photo">
+                    <img src="img/hero.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHT -->
+    <section>
+        <div class="wrap insight">
+            <div class="insight-mark">“</div>
+            <div>
+                <span class="eyebrow">El problema que resolvemos</span>
+                <blockquote>Si sentís inseguridad al enseñar a cantar a niñxs o preadolescentes, es porque nadie te dio
+                    las herramientas para abordar la educación vocal a estas edades con conocimiento, fundamentación
+                    teórica, criterio pedagógico y estrategias acordes a cada etapa del crecimiento.</blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEARN -->
+    <section class="section-alt">
+        <div class="wrap">
+            <span class="eyebrow">Qué vas a lograr</span>
+            <h2 class="h-lg">Herramientas concretas para cada etapa del crecimiento vocal</h2>
+        </div>
+        <div class="wrap" style="margin-top:16px;">
+            <div class="learn-grid">
+                <div class="learn-item">
+                    <div class="bar"></div>
+                    <h3>Criterio pedagógico</h3>
+                    <p>Decidir qué ejercicios y propuestas son mejores para cada grupo, alumnx y etapa del aprendizaje.
+                    </p>
+                </div>
+                <div class="learn-item">
+                    <div class="bar"></div>
+                    <h3>Estrategias propias</h3>
+                    <p>Crear nuevas estrategias pedagógicas que funcionan, sabiendo por qué hacés lo que hacés.</p>
+                </div>
+                <div class="learn-item">
+                    <div class="bar"></div>
+                    <h3>Cuidado vocal</h3>
+                    <p>Cómo cuidar voces en crecimiento y qué cosas no se deben proponer vocalmente a unx niñx o
+                        adolescente.</p>
+                </div>
+                <div class="learn-item">
+                    <div class="bar"></div>
+                    <h3>Propuestas lúdicas</h3>
+                    <p>Complementar tus clases con actividades para entrenar la voz desde ángulos nuevos, dinámicos y
+                        divertidos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHOD -->
+    <section>
+        <div class="wrap method">
+            <div>
+                <span class="eyebrow">Método de cursada</span>
+                <h2 class="h-lg">Encuentros en vivo, con acceso de por vida al material</h2>
+                <p class="sub">Una formación pensada para quien ya está dando clases y necesita sumar estructura, sin
+                    abandonar sus otros compromisos.</p>
+            </div>
+            <div class="method-card">
+                <dl>
+                    <dt>Formato</dt>
+                    <dd>Sincrónico por MS Teams</dd>
+                    <dt>Día y hora</dt>
+                    <dd>Jueves, 18.30hs (Argentina)</dd>
+                    <dt>Inicio</dt>
+                    <dd>Jueves 6 de agosto</dd>
+                    <dt>Duración</dt>
+                    <dd>Clases de una hora, trimestre completo (agosto a octubre)</dd>
+                    <dt>Dedicación</dt>
+                    <dd>2 a 3 horas semanales para materiales y actividades</dd>
+                    <dt>Comunidad</dt>
+                    <dd>Grupo de WhatsApp con espacio de consulta</dd>
+                    <dt>Grabaciones</dt>
+                    <dd>Disponibles en la plataforma, acceso de por vida</dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section-alt">
+        <div class="wrap">
+            <span class="eyebrow">Lo que dicen quienes ya cursaron</span>
+            <h2 class="h-lg">Docentes que encontraron su criterio propio</h2>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <img src="./img/testimonio1.jpeg" alt="">
+                </div>
+                <div class="testi-card">
+                    <img src="./img/testimonio2.jpeg" alt="">
+                </div>
+                <div class="testi-card">
+                    <img src="./img/testimonio3.jpeg" alt="">
+                </div>
+                <div class="testi-card">
+                    <img src="./img/testimonio4.jpeg" alt="">
+                </div>
+                <div class="testi-card">
+                    <img src="./img/testimonio5.jpeg" alt="">
+                </div>
+                <div class="testi-card">
+                    <img src="./img/testimonio6.jpeg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="inscripcion">
+        <div class="wrap">
+            <span class="eyebrow">Inversión</span>
+            <h2 class="h-lg">Invertí en tu desarrollo profesional</h2>
+            <p class="sub">Opciones de pago flexibles, adaptadas a tus posibilidades.</p>
+            <div class="pricing-grid">
+                <div class="price-card featured">
+                    <span class="price-label">Pago completo adelantado</span>
+                    <div class="price-amount">U$S 650 <small>/ ARS 936.000</small></div>
+                    <p class="price-note">Máximo ahorro con pago único anticipado.</p>
+                    <a href="#" class="btn-primary">Lo quiero</a>
+                </div>
+                <div class="price-card">
+                    <span class="price-label">Por cuotas</span>
+                    <div class="price-amount">U$S 235 <small>/ ARS 340.000</small></div>
+                    <p class="price-note">3 cuotas mensuales. Pago disponible en ARS o en USD.</p>
+                    <a href="#" class="btn-outline">Quiero inscribirme</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section-alt">
+        <div class="wrap about">
+            <div class="about-photo">
+                <img src="img/caro.jpg" alt="">
+            </div>
+            <div>
+                <span class="eyebrow">Quién dicta la formación</span>
+                <h2>Carolina Roisinblit</h2>
+                <span class="role">25 años formando cantantes y docentes de canto</span>
+                <p style="color: #c9d6dc;">Autora de 5 libros sobre el canto y la voz, hace 10 años dicta esta formación
+                    en pedagogía vocal para
+                    la infancia y la adolescencia, desde una mirada que integra técnica, desarrollo humano, cuerpo,
+                    emoción y creatividad.</p>
+                <p style="color: #c9d6dc;">A lo largo de su carrera notó algo que se repetía: muchxs docentes llegaban a
+                    trabajar con infancias
+                    y adolescencias sin herramientas específicas, sosteniéndose desde la intuición o replicando modelos
+                    pensados para personas adultas — generando inseguridad docente y experiencias vocales rígidas o poco
+                    respetuosas de los procesos evolutivos. Esta formación nace para cambiar eso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <div class="wrap">
+            <span class="eyebrow">Preguntas frecuentes</span>
+            <h2 class="h-lg">Antes de inscribirte</h2>
+            <div class="faq-list">
+                <details open>
+                    <summary>¿Necesito ser docente de canto para participar?</summary>
+                    <p>No necesariamente. La formación está dirigida a docentes de canto, profesores de música,
+                        directores de coro y profesionales que trabajen o deseen trabajar con infancias y adolescencias
+                        desde la voz.</p>
+                </details>
+                <details>
+                    <summary>¿Necesito conocimientos previos de técnica vocal?</summary>
+                    <p>Sí. Es recomendable contar con una base de conocimientos vocales o experiencia en enseñanza
+                        musical para aprovechar mejor los contenidos.</p>
+                </details>
+                <details>
+                    <summary>¿Puedo hacer preguntas durante la cursada?</summary>
+                    <p>Sí. La formación incluye espacios de consulta y una comunidad de WhatsApp para acompañar el
+                        proceso entre clases.</p>
+                </details>
+                <details>
+                    <summary>¿La formación es solamente para quienes trabajan con niños?</summary>
+                    <p>No. También está especialmente pensada para quienes trabajan con adolescentes, o desean comenzar
+                        a hacerlo con mayor seguridad y herramientas pedagógicas.</p>
+                </details>
+                <details>
+                    <summary>¿Las clases quedan grabadas?</summary>
+                    <p>Sí. Todas las clases estarán disponibles en la plataforma para que puedas revisarlas cuando
+                        quieras, con acceso de por vida.</p>
+                </details>
+                <details>
+                    <summary>¿Cuánto tiempo debo dedicarle por semana?</summary>
+                    <p>Además de las clases en vivo, recomendamos destinar entre 2 y 3 horas semanales para la lectura
+                        de materiales, la realización de actividades y la participación en los espacios de intercambio.
+                    </p>
+                </details>
+                <details>
+                    <summary>¿La entrevista garantiza mi ingreso a la formación?</summary>
+                    <p>La entrevista forma parte del proceso de admisión y nos permite asegurar que la propuesta sea
+                        adecuada para cada participante, cuidando la experiencia de aprendizaje y el trabajo grupal.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="wrap">
+            <span class="eyebrow">Comenzamos el 6 de agosto</span>
+            <h2>Dale a tu forma de enseñar la fundamentación que merece</h2>
+            <a href="#inscripcion" class="btn-primary">Inscribirme ahora</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap footer-inner">
+            <div class="logo">CAROLINA ROISINBLIT</div>
+            <div>Pedagogía Vocal para la Infancia y la Adolescencia · Formación trimestral online</div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
